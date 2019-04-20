@@ -1,0 +1,12 @@
+kubectl apply -f deployment-old.yaml
+kubectl apply -f deployment-new.yaml
+kubectl apply -f service.yaml
+kubectl apply -f istio-resources.yaml
+
+kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80
+
+curl -H"Host: superapp.default.svc.cluster.local" http://localhost:8080/version
+curl -H"Host: superapp.default.svc.cluster.local" http://localhost:8080/version
+curl -H"Host: superapp.default.svc.cluster.local" http://localhost:8080/version
+curl -H"Host: superapp.default.svc.cluster.local" http://localhost:8080/version
+curl -H"Host: superapp.default.svc.cluster.local" http://localhost:8080/version

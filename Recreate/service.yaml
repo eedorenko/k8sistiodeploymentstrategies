@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: superapp
+spec:
+  selector:
+    app: superapp   
+  ports:
+    - port: 8080
+      targetPort: 8080

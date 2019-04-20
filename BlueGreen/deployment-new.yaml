@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: superapp-02
+spec:
+  template:
+    metadata:
+       labels:
+         app: superapp
+         version: "02"
+    spec:
+      containers:
+        - name: superapp
+          image: eugeneflexagon/superapp:new
+          ports:
+            - containerPort: 8080

@@ -1,0 +1,14 @@
+kubectl apply -f deployment-old.yaml
+kubectl apply -f service-old.yaml
+kubectl port-forward svc/superapp 8080:8080
+
+curl http://localhost:8080/version
+
+kubectl apply -f deployment-new.yaml
+
+curl http://localhost:8080/version
+
+kubectl apply -f service-new.yaml
+kubectl scale deployment superapp-01 --replicas=0
+
+curl http://localhost:8080/version
