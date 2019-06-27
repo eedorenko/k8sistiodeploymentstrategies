@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
         - name: superapp
-          image: eugeneflexagon/superapp:new
+          image: ${{FD_PROJECT_DOCKER_IMAGE_NAME}}
           ports:
             - containerPort: 8080
