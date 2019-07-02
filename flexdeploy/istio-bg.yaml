@@ -1,0 +1,55 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: superapp
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: superapp
+spec:
+  host: superapp
+  subsets:
+  - name: green
+    labels:
+      version: "green"
+  - name: blue
+    labels:
+      version: "blue"
+---      
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: superapp
+spec:
+  gateways:
+    - superapp 
+  hosts:
+    - superapp    
+  http:
+  - match:
+    - uri:
+        prefix: /version
+    route:
+    - destination:
+        port:
+          number: 8080
+        host: superapp
+        subset: green
+      weight: 100 
+    - destination:
+        port:
+          number: 8080
+        host: superapp     
+        subset: blue   
+      weight: 0 
