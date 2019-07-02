@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ${{FD_KN_DEPLOYMENT_NAME}}
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+       labels:
+         app: superapp
+    spec:
+      containers:
+        - name: superapp
+          image: ${{FD_PROJECT_DOCKER_IMAGE_NAME}}
+          ports:
+            - containerPort: 8080
