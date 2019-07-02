@@ -22,10 +22,10 @@ spec:
   subsets:
   - name: green
     labels:
-      version: "green"
+      fd_version: "green"
   - name: blue
     labels:
-      version: "blue"
+      fd_version: "blue"
 ---      
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
