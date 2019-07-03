@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ${{FD_KN_DEPLOYMENT_NAME}}
 spec:
-  replicas: 3
+  replicas: 1
   strategy:
     type: Recreate
   template:
