@@ -10,6 +10,7 @@ spec:
     metadata:
        labels:
          app: superapp
+         fd_deployment_name: ${{FD_KN_DEPLOYMENT_NAME}}
     spec:
       containers:
         - name: superapp
