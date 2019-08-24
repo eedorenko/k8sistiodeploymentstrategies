@@ -38,9 +38,7 @@ spec:
     - superapp    
   http:
   - match:
-    - headers:
-        end-user:
-          exact: xammer
+    ${{FD_KN_ROUTE_RULE}}
     route:
     - destination:
         port:
