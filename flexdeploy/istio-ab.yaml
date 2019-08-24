@@ -38,7 +38,9 @@ spec:
     - superapp    
   http:
   - match:
-    ${{FD_KN_ROUTE_RULE}}
+    - headers:
+         end-user:
+           exact: ${{FD_KN_ROUTE_RULE}}
     route:
     - destination:
         port:
